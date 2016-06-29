@@ -1,0 +1,53 @@
+{% set version = '0.0.0' %}
+
+package:
+  name: jupyter_contrib_core
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/jupyter-contrib/jupyter_contrib_core.git
+  git_tag: {{ version }}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - jupyter_core
+    - notebook >=4.0
+    - setuptools
+    - tornado
+    - traitlets
+
+test:
+  imports:
+    - jupyter_contrib_core
+    - jupyter_contrib_core.application
+    - jupyter_contrib_core.notebook_compat
+    - jupyter_contrib_core.notebook_compat.nbextensions
+    - jupyter_contrib_core.notebook_compat.serverextensions
+    - jupyter_contrib_core.notebook_compat._compat
+    - jupyter_contrib_core.notebook_compat._compat.nbextensions
+    - jupyter_contrib_core.notebook_compat._compat.serverextensions
+
+  commands:
+    - jupyter contrib --help
+
+about:
+  summary: Core functionality for jupyter-contrib projects.
+  home: https://github.com/jupyter-contrib/jupyter_contrib_core
+  license_file: LICENSE.txt
+  license: BSD 3-clause
+
+extra:
+  recipe-maintainers:
+    - jcb91
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
