@@ -15,7 +15,7 @@ Common utilities for jupyter-contrib projects. Includes:
 Changes
 =======
 
-0.0.0
+0.0.1
 -----
 
 First public release!
