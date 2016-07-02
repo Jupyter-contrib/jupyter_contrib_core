@@ -12,8 +12,14 @@ Common utilities for jupyter-contrib projects. Includes:
 -   common application components and cli scripts
 -   utility classes and functions for use in tests
 
+
 Changes
 =======
+
+0.2.0
+-----
+
+Include almost-full 4.2 nbextensions public API
 
 0.1.0
 -----
