@@ -19,6 +19,7 @@ Changes
 0.3.0
 -----
 
+* Get `jupyter contrib` app subcommands from `pkg_resources` entrypoints
 * Add `_maybe_copy` and `_should_copy` to nbextensions private API, since the
   `logger` keyword arg was only added after notebook 4.1
 
