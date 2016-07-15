@@ -16,6 +16,12 @@ Common utilities for jupyter-contrib projects. Includes:
 Changes
 =======
 
+0.3.0
+-----
+
+* Add `_maybe_copy` and `_should_copy` to nbextensions private API, since the
+  `logger` keyword arg was only added after notebook 4.1
+
 0.2.0
 -----
 

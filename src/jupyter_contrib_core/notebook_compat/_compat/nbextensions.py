@@ -33,7 +33,7 @@ from jupyter_core.paths import (
     jupyter_config_dir, jupyter_data_dir,
 )
 from notebook.nbextensions import (
-    ArgumentConflict, __version__, _maybe_copy, _safe_is_tarfile,
+    ArgumentConflict, __version__, _safe_is_tarfile,
 )
 from tornado.log import LogFormatter
 from traitlets import Bool
@@ -411,6 +411,29 @@ class BaseNBExtensionApp(JupyterApp):
 # -----------------------------------------------------------------------------
 # Private API
 # -----------------------------------------------------------------------------
+
+
+def _should_copy(src, dest, logger=None):
+    """Return whether a file should be copied."""
+    if not os.path.exists(dest):
+        return True
+    if os.stat(src).st_mtime - os.stat(dest).st_mtime > 1e-6:
+        # we add a fudge factor to work around a bug in python 2.x
+        # that was fixed in python 3.x: http://bugs.python.org/issue12904
+        if logger:
+            logger.warn("Out of date: %s" % dest)
+        return True
+    if logger:
+        logger.info("Up to date: %s" % dest)
+    return False
+
+
+def _maybe_copy(src, dest, logger=None):
+    """Copy a file if it needs updating."""
+    if _should_copy(src, dest, logger=logger):
+        if logger:
+            logger.info("Copying: %s -> %s" % (src, dest))
+        shutil.copy2(src, dest)
 
 
 def _get_nbextension_dir(user=False, sys_prefix=False, prefix=None,
