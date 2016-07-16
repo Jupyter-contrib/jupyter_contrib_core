@@ -22,6 +22,8 @@ Changes
 * Get `jupyter contrib` app subcommands from `pkg_resources` entrypoints
 * Add `_maybe_copy` and `_should_copy` to nbextensions private API, since the
   `logger` keyword arg was only added after notebook 4.1
+* Also patch `JUPYTER_RUNTIME_DIR` environment variable in
+  `testing_utils.jupyter_env`
 
 0.2.0
 -----

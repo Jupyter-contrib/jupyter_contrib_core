@@ -59,6 +59,7 @@ def patch_jupyter_dirs():
             'HOME': jupyter_dirs['user_home']['root'],
             'JUPYTER_CONFIG_DIR': jupyter_dirs['env_vars']['conf'],
             'JUPYTER_DATA_DIR': jupyter_dirs['env_vars']['data'],
+            'JUPYTER_RUNTIME_DIR': jupyter_dirs['server']['runtime'],
         })))
 
     # patch jupyter path variables in various modules
