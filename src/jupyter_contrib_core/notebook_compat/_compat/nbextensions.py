@@ -187,7 +187,8 @@ def install_nbextension_python(module, overwrite=False, symlink=False,
 
 
 def uninstall_nbextension(dest, require=None, user=False, sys_prefix=False,
-                          prefix=None, nbextensions_dir=None, logger=None):
+                          prefix=None, nbextensions_dir=None, logger=None,
+                          config_dir=None):
     """Uninstall a Javascript extension of the notebook."""
     nbext = _get_nbextension_dir(user=user, sys_prefix=sys_prefix,
                                  prefix=prefix,
@@ -204,9 +205,9 @@ def uninstall_nbextension(dest, require=None, user=False, sys_prefix=False,
 
     # Look through all of the config sections making sure that the nbextension
     # doesn't exist.
-    config_dir = os.path.join(
-        _get_config_dir(user=user, sys_prefix=sys_prefix), 'nbconfig')
-    cm = BaseJSONConfigManager(config_dir=config_dir)
+    if not config_dir:
+        config_dir = _get_config_dir(user=user, sys_prefix=sys_prefix),
+    cm = BaseJSONConfigManager(config_dir=os.path.join(config_dir, 'nbconfig'))
     if require:
         for section in NBCONFIG_SECTIONS:
             cm.update(section, {"load_extensions": {require: None}})
@@ -214,7 +215,7 @@ def uninstall_nbextension(dest, require=None, user=False, sys_prefix=False,
 
 def uninstall_nbextension_python(module, user=False, sys_prefix=False,
                                  prefix=None, nbextensions_dir=None,
-                                 logger=None):
+                                 logger=None, config_dir=None):
     """Uninstall an nbextension bundled in a Python package."""
     m, nbexts = _get_nbextension_metadata(module)
     for nbext in nbexts:
@@ -224,16 +225,16 @@ def uninstall_nbextension_python(module, user=False, sys_prefix=False,
             logger.info("Uninstalling {} {}".format(dest, require))
         uninstall_nbextension(dest, require, user=user, sys_prefix=sys_prefix,
                               prefix=prefix, nbextensions_dir=nbextensions_dir,
-                              logger=logger)
+                              logger=logger, config_dir=config_dir)
 
 
 def _set_nbextension_state(section, require, state,
-                           user=True, sys_prefix=False, logger=None):
+                           user=True, sys_prefix=False, logger=None, config_dir=None):
     """Set whether the section's frontend should require the nbextension."""
     user = False if sys_prefix else user
-    config_dir = os.path.join(
-        _get_config_dir(user=user, sys_prefix=sys_prefix), 'nbconfig')
-    cm = BaseJSONConfigManager(config_dir=config_dir)
+    if not config_dir:
+        config_dir = _get_config_dir(user=user, sys_prefix=sys_prefix)
+    cm = BaseJSONConfigManager(config_dir=os.path.join(config_dir, 'nbconfig'))
     if logger:
         logger.info("{} {} extension {}...".format(
             "Enabling" if state else "Disabling",
@@ -248,47 +249,47 @@ def _set_nbextension_state(section, require, state,
 
 
 def _set_nbextension_state_python(state, module, user, sys_prefix,
-                                  logger=None):
+                                  logger=None, config_dir=None):
     """Enable or disable some nbextensions stored in a Python package."""
     m, nbexts = _get_nbextension_metadata(module)
     return [_set_nbextension_state(section=nbext["section"],
                                    require=nbext["require"],
                                    state=state,
                                    user=user, sys_prefix=sys_prefix,
-                                   logger=logger)
+                                   logger=logger, config_dir=config_dir)
             for nbext in nbexts]
 
 
 def enable_nbextension(section, require, user=True, sys_prefix=False,
-                       logger=None):
+                       logger=None, config_dir=None):
     """Enable a named nbextension."""
     return _set_nbextension_state(section=section, require=require,
                                   state=True,
                                   user=user, sys_prefix=sys_prefix,
-                                  logger=logger)
+                                  logger=logger, config_dir=config_dir)
 
 
 def disable_nbextension(section, require, user=True, sys_prefix=False,
-                        logger=None):
+                        logger=None, config_dir=None):
     """Disable a named nbextension."""
     return _set_nbextension_state(section=section, require=require,
                                   state=False,
                                   user=user, sys_prefix=sys_prefix,
-                                  logger=logger)
+                                  logger=logger, config_dir=config_dir)
 
 
 def enable_nbextension_python(module, user=True, sys_prefix=False,
-                              logger=None):
+                              logger=None, config_dir=None):
     """Enable some nbextensions associated with a Python module."""
     return _set_nbextension_state_python(True, module, user, sys_prefix,
-                                         logger=logger)
+                                         logger=logger, config_dir=config_dir)
 
 
 def disable_nbextension_python(module, user=True, sys_prefix=False,
-                               logger=None):
+                               logger=None, config_dir=None):
     """Disable some nbextensions associated with a Python module."""
     return _set_nbextension_state_python(False, module, user, sys_prefix,
-                                         logger=logger)
+                                         logger=logger, config_dir=config_dir)
 
 
 def validate_nbextension(require, logger=None):
