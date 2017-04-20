@@ -10,6 +10,7 @@ matrix:
     - os: linux
       python: '3.4'
       env: TOXENV=check
+    # python linting
     - os: linux
       python: '3.4'
       env: TOXENV=lint

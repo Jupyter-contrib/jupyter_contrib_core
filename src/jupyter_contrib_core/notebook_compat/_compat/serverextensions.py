@@ -148,6 +148,7 @@ def validate_serverextension(import_name, logger=None):
 # Applications. Some from the notebook version of serverextensions are skipped
 # ----------------------------------------------------------------------------
 
+
 flags = {}
 flags.update(JupyterApp.flags)
 flags.pop('y', None)

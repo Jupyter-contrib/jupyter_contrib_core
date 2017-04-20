@@ -79,5 +79,6 @@ Common utilities for jupyter-contrib projects. Includes:
         ],
     )
 
+
 if __name__ == '__main__':
     main()

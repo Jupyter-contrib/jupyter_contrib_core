@@ -55,6 +55,7 @@ class JupyterContribApp(JupyterApp):
         subcmds = ", ".join(sorted(self.subcommands))
         sys.exit("Please supply at least one subcommand: %s" % subcmds)
 
+
 main = JupyterContribApp.launch_instance
 
 if __name__ == '__main__':  # pragma: no cover
