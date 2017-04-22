@@ -16,6 +16,10 @@ Common utilities for jupyter-contrib projects. Includes:
 Changes
 =======
 
+0.3.1
+-----
+* Patch release removing non-ASCII whitespace character from MANIFEST.in
+
 0.3.0
 -----
 
