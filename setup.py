@@ -23,14 +23,14 @@ Common utilities for jupyter-contrib projects. Includes:
 -   common application components and cli scripts
 -   utility classes and functions for use in tests
 """,
-        version='0.3.1',
+        version='0.3.2',
         author='jcb91, jupyter-contrib developers',
         author_email='joshuacookebarnes@gmail.com',
         url=('https://github.com/'
              'jupyter-contrib/jupyter_contrib_core'),
         download_url=('https://github.com/'
                       'jupyter-contrib/jupyter_contrib_core/'
-                      'tarball/0.3.1'),
+                      'tarball/0.3.2'),
         keywords=['Jupyter', 'notebook'],
         license='BSD 3-clause',
         platforms=['any'],
