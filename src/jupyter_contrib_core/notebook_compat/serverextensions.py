@@ -3,9 +3,9 @@
 
 try:
     from notebook.serverextensions import (
-        ArgumentConflict, ToggleServerExtensionApp,
-        toggle_serverextension_python,
+        ToggleServerExtensionApp, toggle_serverextension_python,
     )
+    from notebook.extensions import ArgumentConflict
 except ImportError:
     from ._compat.serverextensions import (
         ArgumentConflict, ToggleServerExtensionApp,
