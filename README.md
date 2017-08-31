@@ -16,9 +16,24 @@ Common utilities for jupyter-contrib projects. Includes:
 Changes
 =======
 
+0.3.3
+-----
+
+More bugfixes for notebook 5
+
+
+0.3.2
+-----
+
+Fix for `ArgumentConflict`, which moved module in notebook 5, courtesy of
+[@haobibo](https://github.com/haobibo)
+
+
 0.3.1
 -----
-* Patch release removing non-ASCII whitespace character from MANIFEST.in
+
+Patch release removing non-ASCII whitespace character from MANIFEST.in
+
 
 0.3.0
 -----
@@ -29,15 +44,18 @@ Changes
 * Also patch `JUPYTER_RUNTIME_DIR` environment variable in
   `testing_utils.jupyter_env`
 
+
 0.2.0
 -----
 
 Include almost-full 4.2 nbextensions public API
 
+
 0.1.0
 -----
 
-Move raise_on_bad_version to testing_utils package.
+Move `raise_on_bad_version` to `testing_utils` package.
+
 
 0.0.1
 -----
