@@ -68,9 +68,11 @@ def patch_jupyter_dirs():
     # notebook.nbextensions
     # or
     # jupyter_contrib_core.notebook_compat._compat.nbextensions
-    modules_to_patch = (
+    modules_to_patch = set([
         jupyter_core.paths,
-        sys.modules[nbextensions._get_config_dir.__module__])
+        sys.modules[nbextensions._get_config_dir.__module__],
+        sys.modules[nbextensions._get_nbextension_dir.__module__],
+    ])
     path_patches = dict(
         SYSTEM_CONFIG_PATH=[jupyter_dirs['system']['conf']],
         ENV_CONFIG_PATH=[jupyter_dirs['sys_prefix']['conf']],
