@@ -8,7 +8,7 @@ from __future__ import (
 import logging
 from unittest import TestCase
 
-import nose.tools as nt
+import pytest
 from traitlets.tests.utils import check_help_all_output, check_help_output
 
 from jupyter_contrib_core.application import main as main_app
@@ -59,5 +59,5 @@ class AppTest(TestCase):
         check_help_output(app_module, [])
         check_help_all_output(app_module, [])
         # sys.exit should be called if no argv specified
-        with nt.assert_raises(SystemExit):
+        with pytest.raises(SystemExit):
             main_app([])
