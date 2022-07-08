@@ -12,17 +12,17 @@ environment:
       TOXPYTHON: C:\Python38\python.exe
       PYTHON_HOME: C:\Python38
       PYTHON_VERSION: '3.8'
-      PYTHON_ARCH: '32'
+      PYTHON_ARCH: '64'
     - TOXENV: 'py38-notebook64'
       TOXPYTHON: C:\Python38\python.exe
       PYTHON_HOME: C:\Python38
       PYTHON_VERSION: '3.8'
-      PYTHON_ARCH: '32'
+      PYTHON_ARCH: '64'
     - TOXENV: 'py38-notebook'
       TOXPYTHON: C:\Python38\python.exe
       PYTHON_HOME: C:\Python38
       PYTHON_VERSION: '3.8'
-      PYTHON_ARCH: '32'
+      PYTHON_ARCH: '64'
 init:
   - ps: echo $env:TOXENV
   - ps: ls C:\Python*
@@ -38,7 +38,7 @@ install:
   # about it being out of date.
   - 'python -m pip install --disable-pip-version-check --user --upgrade pip'
   # install tox
-  - pip install tox
+  - python -m pip install tox
   # install of the actual project is handled by tox in tests
 test_script:
   # run tox tests
