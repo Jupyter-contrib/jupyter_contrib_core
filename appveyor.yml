@@ -8,20 +8,20 @@ cache:
   - '%LOCALAPPDATA%\pip\Cache'
 environment:
   matrix:
-    - TOXENV: 'py39-notebook57'
-      TOXPYTHON: C:\Python39\python.exe
-      PYTHON_HOME: C:\Python39
-      PYTHON_VERSION: '3.9'
+    - TOXENV: 'py38-notebook57'
+      TOXPYTHON: C:\Python38\python.exe
+      PYTHON_HOME: C:\Python38
+      PYTHON_VERSION: '3.8'
       PYTHON_ARCH: '32'
-    - TOXENV: 'py39-notebook64'
-      TOXPYTHON: C:\Python39\python.exe
-      PYTHON_HOME: C:\Python39
-      PYTHON_VERSION: '3.9'
+    - TOXENV: 'py38-notebook64'
+      TOXPYTHON: C:\Python38\python.exe
+      PYTHON_HOME: C:\Python38
+      PYTHON_VERSION: '3.8'
       PYTHON_ARCH: '32'
-    - TOXENV: 'py39-notebook'
-      TOXPYTHON: C:\Python39\python.exe
-      PYTHON_HOME: C:\Python39
-      PYTHON_VERSION: '3.9'
+    - TOXENV: 'py38-notebook'
+      TOXPYTHON: C:\Python38\python.exe
+      PYTHON_HOME: C:\Python38
+      PYTHON_VERSION: '3.8'
       PYTHON_ARCH: '32'
 init:
   - ps: echo $env:TOXENV
