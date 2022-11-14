@@ -30,7 +30,7 @@ Common utilities for jupyter-contrib projects. Includes:
              'jupyter-contrib/jupyter_contrib_core'),
         download_url=('https://github.com/'
                       'jupyter-contrib/jupyter_contrib_core/'
-                      'tarball/0.4.0'),
+                      'tarball/0.4.1'),
         keywords=['Jupyter', 'notebook'],
         license='BSD 3-clause',
         platforms=['any'],

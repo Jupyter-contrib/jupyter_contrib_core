@@ -16,6 +16,11 @@ Common utilities for jupyter-contrib projects. Includes:
 Changes
 =======
 
+0.4.1
+-----
+
+Remove `scripts` entry from `setup.py`  
+
 0.3.3
 -----
 
