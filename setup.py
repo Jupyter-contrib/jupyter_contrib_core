@@ -63,9 +63,6 @@ Common utilities for jupyter-contrib projects. Includes:
                 'jupyter-contrib = jupyter_contrib_core.application:main',  # noqa
             ],
         },
-        scripts=[os.path.join('scripts', p) for p in [
-            'jupyter-contrib',
-        ]],
         classifiers=[
             'Intended Audience :: End Users/Desktop',
             'Intended Audience :: Science/Research',
