@@ -16,7 +16,7 @@ Common utilities for jupyter-contrib projects. Includes:
 Changes
 =======
 
-0.4.1
+0.4.2
 -----
 
 * Fix CI
