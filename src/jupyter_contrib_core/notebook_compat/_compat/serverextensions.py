@@ -41,7 +41,8 @@ class ArgumentConflict(ValueError):
 
 
 def toggle_serverextension_python(import_name, enabled=None, parent=None,
-                                  user=True, sys_prefix=False, logger=None):
+                                  user=True, sys_prefix=False, logger=None,
+                                  config_dir=None):
     """Toggle a server extension.
 
     By default, toggles the extension in the system-wide Jupyter configuration
@@ -66,7 +67,8 @@ def toggle_serverextension_python(import_name, enabled=None, parent=None,
         Logger instance to use
     """
     user = False if sys_prefix else user
-    config_dir = _get_config_dir(user=user, sys_prefix=sys_prefix)
+    if not config_dir:
+        config_dir = _get_config_dir(user=user, sys_prefix=sys_prefix)
     cm = BaseJSONConfigManager(parent=parent, config_dir=config_dir)
     cfg = cm.get("jupyter_notebook_config")
     server_extensions = (
