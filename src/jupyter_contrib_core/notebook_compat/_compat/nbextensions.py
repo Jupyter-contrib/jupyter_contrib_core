@@ -32,9 +32,15 @@ from jupyter_core.paths import (
     ENV_CONFIG_PATH, ENV_JUPYTER_PATH, SYSTEM_CONFIG_PATH, SYSTEM_JUPYTER_PATH,
     jupyter_config_dir, jupyter_data_dir,
 )
-from notebook.nbextensions import (
+try:
+    from notebook.nbextensions import (
     ArgumentConflict, __version__, _safe_is_tarfile,
 )
+except ImportError:
+    from nbclassic.nbextensions import (
+        ArgumentConflict, __version__, _safe_is_tarfile,
+    )
+
 from tornado.log import LogFormatter
 from traitlets import Bool
 from traitlets.config.manager import BaseJSONConfigManager

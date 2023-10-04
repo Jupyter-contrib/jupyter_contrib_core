@@ -70,8 +70,8 @@ def toggle_serverextension_python(import_name, enabled=None, parent=None,
     cm = BaseJSONConfigManager(parent=parent, config_dir=config_dir)
     cfg = cm.get("jupyter_notebook_config")
     server_extensions = (
-        cfg.setdefault("NotebookApp", {})
-        .setdefault("server_extensions", [])
+        cfg.setdefault("ServerApp", {})
+        .setdefault("jpserver_extensions", [])
     )
 
     old_enabled = import_name in server_extensions
