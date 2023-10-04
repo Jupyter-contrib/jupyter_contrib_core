@@ -373,7 +373,6 @@ class BaseNBExtensionApp(JupyterApp):
     """Base nbextension installer app"""
     _log_formatter_cls = LogFormatter
     version = __version__
-    print(f"version is: {__version__}")
 
     flags = copy.deepcopy(JupyterApp.flags)
     flags.update({
