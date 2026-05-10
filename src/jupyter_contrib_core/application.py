@@ -9,7 +9,12 @@ from __future__ import print_function
 
 import sys
 
-import pkg_resources
+try:
+    from importlib.metadata import entry_points as iter_entry_points
+except ModuleNotFoundError:
+    # for setuptools<82
+    from pkg_resources import iter_entry_points
+
 from jupyter_core.application import JupyterApp
 
 from jupyter_contrib_core import __version__
@@ -39,7 +44,7 @@ class JupyterContribApp(JupyterApp):
         group = 'jupyter_contrib_core.app.subcommands'
         new_subcommands = {}
         # import ipdb; ipdb.set_trace()
-        for entrypoint in pkg_resources.iter_entry_points(group=group):
+        for entrypoint in iter_entry_points(group=group):
             get_subcommands_dict = entrypoint.load()
             new_subcommands.update(get_subcommands_dict())
         self.subcommands.clear()
